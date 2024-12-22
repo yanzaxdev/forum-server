@@ -1,12 +1,16 @@
-import express, {Request, Response} from 'express';
+import cors from 'cors';
+import express from 'express';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3001;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript with Express!');
+// Enable CORS for all routes
+app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Backend server is running at http://localhost:${port}`);
 });
